@@ -11,3 +11,4 @@ docker run \
 ## Resources
 
 - [Run an agent in Docker](https://docs.microsoft.com/azure/devops/pipelines/agents/docker)
+- [Ephemeral Pipelines Agents](https://github.com/microsoft/azure-pipelines-ephemeral-agents)
