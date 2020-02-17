@@ -1,19 +1,19 @@
-FROM debian:stretch-slim
+FROM ubuntu:18.04
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
+RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
 RUN apt-get update \
-    && apt-get install apt-utils -qq 
-
-RUN apt-get install -qq --no-install-recommends \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    jq \
-    git \
-    unzip \
-    wget \
-    zip \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        curl \
+        jq \
+        git \
+        iputils-ping \
+        libcurl3 \
+        libicu55 \
+        libunwind8 \
+        netcat
     && rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # Install Docker
