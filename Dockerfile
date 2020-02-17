@@ -17,7 +17,7 @@ RUN apt-get install -qq --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # Install Docker
-ENV DOCKER_VERSION 19.03.6-ce
+ENV DOCKER_VERSION 19.03.6
 RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_VERSION.tgz \
     && tar --strip-components=1 -xvzf docker-$DOCKER_VERSION.tgz -C /usr/local/bin && rm docker-$DOCKER_VERSION.tgz
 
