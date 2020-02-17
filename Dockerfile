@@ -13,7 +13,7 @@ RUN apt-get update \
         libcurl3 \
         libicu55 \
         libunwind8 \
-        netcat
+        netcat \
     && rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # Install Docker
