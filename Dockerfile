@@ -14,6 +14,7 @@ RUN apt-get update \
         libicu55 \
         libunwind8 \
         netcat \
+        unzip \
     && rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # Install Docker
