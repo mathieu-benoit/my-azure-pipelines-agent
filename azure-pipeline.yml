@@ -18,7 +18,7 @@ variables:
   # define 3 more variables: registryName, registryLogin and registryPassword in the build pipeline in UI
 
 steps:
-- bash: docker build -f $(system.defaultWorkingDirectory)/Dockerfile -t $(registryName)/$(imageName):$(imageTag) $(system.defaultWorkingDirectory)
+- bash: docker build -f $(system.defaultWorkingDirectory)/Dockerfile -t $(registryName)/$(imageName):$(imageTag) -t $(registryName)/$(imageName):latest $(system.defaultWorkingDirectory)
   displayName: 'docker build'
 
 - bash: docker login -u $(registryLogin) -p $(registryPassword)
@@ -27,5 +27,7 @@ steps:
 
 - bash: |
     docker push $(registryName)/$(imageName):$(imageTag)
+    docker push $(registryName)/$(imageName):latest
+    
   displayName: 'docker push'
   condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
