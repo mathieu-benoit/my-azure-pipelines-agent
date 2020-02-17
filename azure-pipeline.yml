@@ -1,0 +1,31 @@
+pool:
+  vmImage: 'ubuntu-18.04'
+
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+  paths:
+    exclude:
+    - README.md
+
+pr: none
+
+variables:
+  imageName: 'ado-agent'
+  imageTag: $(build.buildId)
+  # define 3 more variables: registryName, registryLogin and registryPassword in the build pipeline in UI
+
+steps:
+- bash: docker build -f $(system.defaultWorkingDirectory)/Dockerfile -t $(registryName)/$(imageName):$(imageTag) $(system.defaultWorkingDirectory)
+  displayName: 'docker build'
+
+- bash: docker login -u $(registryLogin) -p $(registryPassword)
+  displayName: 'docker login'
+  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
+
+- bash: |
+    docker push $(registryName)/$(imageName):$(imageTag)
+  displayName: 'docker push'
+  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
