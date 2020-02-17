@@ -1,7 +1,7 @@
 # my-azure-pipelines-agent
 
 This repository contains the definition of my custom Azure Pipelines agent as a Docker image.
-I'm installing Docker, Azure CLI, Kubectl and Terraform on that agent.
+I'm installing Docker, Azure CLI and Terraform on that agent.
 
 ## Run the agent on Docker
 
