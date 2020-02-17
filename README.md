@@ -1,5 +1,7 @@
 # my-azure-pipelines-agent
 
+## Run the agent on Docker
+
 ```
 docker run \
   -e AZP_URL=<Azure DevOps instance> \
@@ -7,6 +9,12 @@ docker run \
   -e AZP_AGENT_NAME=myadoagent \
   mabenoit/ado-agent:latest
 ```
+
+> Note: if you need to run Docker on that Docker agent, you will need to add that parameter in the above command: `-v /var/run/docker.sock:/var/run/docker.sock`
+
+## Run the agent on Kubernetes
+
+FIXME
 
 ## Resources
 
