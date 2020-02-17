@@ -51,7 +51,7 @@ print_header "1. Determining matching Azure Pipelines agent..."
 
 AZP_AGENT_RESPONSE=$(curl -LsS \
   -u user:$(cat "$AZP_TOKEN_FILE") \
-  -H 'Accept:application/json;api-version=5.1' \
+  -H 'Accept:application/json;api-version=3.0-preview' \
   "$AZP_URL/_apis/distributedtask/packages/agent?platform=linux-x64")
 
 if echo "$AZP_AGENT_RESPONSE" | jq . >/dev/null 2>&1; then
@@ -85,6 +85,11 @@ print_header "3. Configuring Azure Pipelines agent..."
   --replace \
   --acceptTeeEula & wait $!
 
+# remove the administrative token before accepting work
+rm $AZP_TOKEN_FILE
+
 print_header "4. Running Azure Pipelines agent..."
 
-./bin/Agent.Listener run & wait $!
+# `exec` the node runtime so it's aware of TERM and INT signals
+# AgentService.js understands how to handle agent self-update and restart
+exec ./externals/node/bin/node ./bin/AgentService.js interactive
