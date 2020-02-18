@@ -4,7 +4,9 @@ trigger: none
 pr: none
 
 steps:
-- bash: docker --version   
+- bash: |
+    docker --version
+    docker pull alpine
   displayName: 'docker'
 - bash: az version   
   displayName: 'az'
