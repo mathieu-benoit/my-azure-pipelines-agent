@@ -8,7 +8,7 @@ I'm installing Docker, Azure CLI and Terraform on that agent.
 ```
 AZP_TOKEN=FIXME
 AZP_URL=https://dev.azure.com/FIXME
-AZP_AGENT_NAME=FIXME
+AZP_AGENT_NAME=myadoagent
 
 docker run \
   -e AZP_URL=$AZP_URL \
@@ -24,7 +24,7 @@ docker run \
 ```
 AZP_TOKEN=FIXME
 AZP_URL=https://dev.azure.com/FIXME
-AZP_AGENT_NAME=FIXME
+AZP_AGENT_NAME=myadoagent
 
 kubectl create secret generic azp \
   --from-literal=AZP_URL=$AZP_URL \
