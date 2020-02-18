@@ -1,5 +1,4 @@
-pool:
-  vmImage: 'myadoagent'
+pool: myadoagent
 
 trigger: none
 pr: none
