@@ -31,6 +31,14 @@ RUN curl -fsSLO https://releases.hashicorp.com/terraform/$TERRAFORM_VERSION/terr
 # Install Azure CLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
+# Install Helm
+ENV HELM_VERSION 3.1.0
+RUN curl -fsS "https://get.helm.sh/helm-v$ver-linux-amd64.tar.gz" -o /helm.tar.gz \
+    && tar -zxf helm.tar.gz \
+    && mv linux-amd64/helm /usr/local/bin \
+    && rm helm.tar.gz \
+    && rm -rf linux-amd64
+
 WORKDIR /azp
 
 COPY ./start.sh .
