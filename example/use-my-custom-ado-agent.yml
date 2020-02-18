@@ -1,0 +1,15 @@
+pool:
+  vmImage: 'myadoagent'
+
+trigger: none
+pr: none
+
+steps:
+- bash: docker --version   
+  displayName: 'docker'
+- bash: az version   
+  displayName: 'az'
+- bash: terraform version   
+  displayName: 'terraform'
+- bash: helm version   
+  displayName: 'helm'
