@@ -25,11 +25,13 @@ docker run \
 AZP_TOKEN=FIXME
 AZP_URL=https://dev.azure.com/FIXME
 AZP_AGENT_NAME=myadoagent
+AZP_POOL=myadoagent
 
 kubectl create secret generic azp \
   --from-literal=AZP_URL=$AZP_URL \
   --from-literal=AZP_TOKEN=$AZP_TOKEN \
-  --from-literal=AZP_AGENT_NAME=$AZP_AGENT_NAME
+  --from-literal=AZP_AGENT_NAME=$AZP_AGENT_NAME \
+  --from-literal=AZP_POOL=$AZP_POOL
 
 kubectl apply -f - <<EOF
 apiVersion: apps/v1
@@ -64,7 +66,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: azp
-                  key: AZP_AGENT_NAME 
+                  key: AZP_AGENT_NAME
+            - name: AZP_POOL
+              valueFrom:
+                secretKeyRef:
+                  name: azp
+                  key: AZP_POOL
           volumeMounts:
             - mountPath: /var/run/docker.sock
               name: docker-socket-volume
