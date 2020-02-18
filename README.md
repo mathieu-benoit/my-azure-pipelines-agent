@@ -8,11 +8,12 @@ I'm installing Docker, Azure CLI and Terraform on that agent.
 ```
 AZP_TOKEN=FIXME
 AZP_URL=https://dev.azure.com/FIXME
+AZP_AGENT_NAME=FIXME
 
 docker run \
   -e AZP_URL=$AZP_URL \
   -e AZP_TOKEN=$AZP_TOKEN \
-  -e AZP_AGENT_NAME=myadoagent \
+  -e AZP_AGENT_NAME=$AZP_AGENT_NAME \
   -it mabenoit/ado-agent:latest
 ```
 
@@ -20,7 +21,56 @@ docker run \
 
 ## Run the agent on Kubernetes
 
-FIXME
+```
+AZP_TOKEN=FIXME
+AZP_URL=https://dev.azure.com/FIXME
+AZP_AGENT_NAME=FIXME
+
+kubectl create secret generic azp \
+  --from-literal=AZP_URL=$AZP_URL \
+  --from-literal=AZP_TOKEN=$AZP_TOKEN \
+  --from-literal=AZP_AGENT_NAME=$AZP_AGENT_NAME
+
+kubectl apply -f - <<EOF
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ado-agent
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ado-agent
+    spec:
+      containers:
+        - name: ado-agent
+          image: mabenoit/ado-agent:latest
+          env:
+            - name: AZP_URL
+              valueFrom:
+                secretKeyRef:
+                  name: azp
+                  key: url
+            - name: AZP_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: azp
+                  key: token
+            - name: AZP_POOL
+              valueFrom:
+                secretKeyRef:
+                  name: azp
+                  key: pool   
+          volumeMounts:
+            - mountPath: /var/run/docker.sock
+              name: docker-socket-volume
+      volumes:
+        - name: docker-socket-volume
+          hostPath:
+            path: /var/run/docker.sock
+EOF
+```
 
 ## Resources
 
