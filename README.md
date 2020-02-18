@@ -38,6 +38,9 @@ metadata:
   name: ado-agent
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: ado-agent
   template:
     metadata:
       labels:
@@ -51,17 +54,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: azp
-                  key: url
+                  key: AZP_URL
             - name: AZP_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: azp
-                  key: token
-            - name: AZP_POOL
+                  key: AZP_TOKEN
+            - name: AZP_AGENT_NAME
               valueFrom:
                 secretKeyRef:
                   name: azp
-                  key: pool   
+                  key: AZP_AGENT_NAME 
           volumeMounts:
             - mountPath: /var/run/docker.sock
               name: docker-socket-volume
