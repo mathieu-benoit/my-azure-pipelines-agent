@@ -1,11 +1,6 @@
-variables:
-  selfHostedAgent: myadoagent
-
 pool:
-${{ if eq(variables.selfHostedAgent, '') }}:
-  imageName: ubuntu-18.04
-${{ if ne(variables.selfHostedAgent, '') }}:
-  name: $(vmImage)
+  name: myadoagent
+  #imageName: ubuntu-18.04
 
 trigger: none
 pr: none
