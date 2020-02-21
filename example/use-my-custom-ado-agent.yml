@@ -5,6 +5,7 @@ trigger: none
 pr: none
 
 steps:
+- checkout: none
 - bash: |
     docker --version
     docker pull alpine
