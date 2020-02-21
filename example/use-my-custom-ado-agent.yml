@@ -1,5 +1,8 @@
+variables:
+  vmImage: myadoagent
+
 pool: 
-    name: myadoagent
+  name: $(vmImage)
 
 trigger: none
 pr: none
