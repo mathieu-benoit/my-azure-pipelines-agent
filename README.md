@@ -87,3 +87,4 @@ EOF
 - [Run an agent in Docker](https://docs.microsoft.com/azure/devops/pipelines/agents/docker)
 - [Ephemeral Pipelines Agents](https://github.com/microsoft/azure-pipelines-ephemeral-agents)
 - [Elastic Self-hosted Agent Pools (coming soon)](https://github.com/microsoft/azure-pipelines-agent/blob/master/docs/design/byos.md)
+- [Load Testing Pipeline with JMeter, ACI and Terraform](https://docs.microsoft.com/samples/azure-samples/jmeter-aci-terraform/jmeter-aci-terraform/)
