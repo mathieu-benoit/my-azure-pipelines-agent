@@ -1,6 +1,6 @@
 pool:
-  name: myadoagent
-  #imageName: ubuntu-18.04
+  #name: myadoagent
+  imageName: ubuntu-18.04
 
 trigger: none
 pr: none
