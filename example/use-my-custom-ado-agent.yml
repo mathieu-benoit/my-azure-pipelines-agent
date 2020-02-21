@@ -1,4 +1,5 @@
-pool: myadoagent
+pool: 
+    name: myadoagent
 
 trigger: none
 pr: none
