@@ -9,11 +9,13 @@ I'm installing Docker, Azure CLI and Terraform on that agent.
 AZP_TOKEN=FIXME
 AZP_URL=https://dev.azure.com/FIXME
 AZP_AGENT_NAME=myadoagent
+AZP_POOL=myadoagent
 
 docker run \
   -e AZP_URL=$AZP_URL \
   -e AZP_TOKEN=$AZP_TOKEN \
   -e AZP_AGENT_NAME=$AZP_AGENT_NAME \
+  -e AZP_POOL=$AZP_POOL \
   -it mabenoit/ado-agent:latest
 ```
 
@@ -25,12 +27,13 @@ docker run \
 AZP_TOKEN=FIXME
 AZP_URL=https://dev.azure.com/FIXME
 AZP_AGENT_NAME=myadoagent
+AZP_POOL=myadoagent
 
 az container create \
   -g $rg -n $name \
   --image mabenoit/ado-agent:latest \
   --ip-address Private \
-  -e AZP_URL=$AZP_URL AZP_TOKEN=$AZP_TOKEN AZP_AGENT_NAME=$AZP_AGENT_NAME
+  -e AZP_URL=$AZP_URL AZP_TOKEN=$AZP_TOKEN AZP_AGENT_NAME=$AZP_AGENT_NAME AZP_POOL=$AZP_POOL
 ```
 
 > Note: you canno't run Docker on that Docker agent, in other word youcan't add that parameter in the above command: `-v /var/run/docker.sock:/var/run/docker.sock`
