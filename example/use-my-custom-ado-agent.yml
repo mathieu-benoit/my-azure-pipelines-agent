@@ -1,6 +1,6 @@
 pool:
-  #name: myadoagent
-  imageName: ubuntu-latest
+  name: myadoagent
+  #imageName: ubuntu-latest
 
 trigger: none
 pr: none
