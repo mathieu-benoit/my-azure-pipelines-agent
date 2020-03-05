@@ -23,7 +23,7 @@ RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-$D
     && tar --strip-components=1 -xvzf docker-$DOCKER_VERSION.tgz -C /usr/local/bin && rm docker-$DOCKER_VERSION.tgz
 
 # Install Terraform
-ENV TERRAFORM_VERSION 0.12.21
+ENV TERRAFORM_VERSION 0.12.22
 RUN curl -fsSLO https://releases.hashicorp.com/terraform/$TERRAFORM_VERSION/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
     && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin \
     && chmod 755 /usr/local/bin/terraform && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
