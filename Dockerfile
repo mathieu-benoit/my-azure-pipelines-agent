@@ -18,12 +18,12 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # Install Docker
-ENV DOCKER_VERSION 19.03.7
+ENV DOCKER_VERSION 19.03.8
 RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_VERSION.tgz \
     && tar --strip-components=1 -xvzf docker-$DOCKER_VERSION.tgz -C /usr/local/bin && rm docker-$DOCKER_VERSION.tgz
 
 # Install Terraform
-ENV TERRAFORM_VERSION 0.12.22
+ENV TERRAFORM_VERSION 0.12.23
 RUN curl -fsSLO https://releases.hashicorp.com/terraform/$TERRAFORM_VERSION/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
     && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin \
     && chmod 755 /usr/local/bin/terraform && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
