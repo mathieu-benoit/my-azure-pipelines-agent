@@ -10,7 +10,7 @@ RUN apt-get update \
         jq \
         git \
         iputils-ping \
-        libcurl3 \
+        libcurl4 \
         libunwind8 \
         netcat \
         unzip \
