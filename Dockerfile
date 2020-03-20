@@ -9,10 +9,6 @@ RUN apt-get update \
         curl \
         jq \
         git \
-        iputils-ping \
-        libcurl4 \
-        libunwind8 \
-        netcat \
         unzip \
     && rm -rf /var/lib/apt/lists/* && apt-get clean
 
