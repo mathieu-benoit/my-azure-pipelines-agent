@@ -24,6 +24,7 @@ RUN curl -fsSLO https://releases.hashicorp.com/terraform/$TERRAFORM_VERSION/terr
     && chmod 755 /usr/local/bin/terraform && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
 # Install Azure CLI
+# azure-cli-2.3.1
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 # Install Helm
