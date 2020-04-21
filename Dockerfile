@@ -28,7 +28,7 @@ RUN curl -fsSLO https://releases.hashicorp.com/terraform/$TERRAFORM_VERSION/terr
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 # Install Helm
-ENV HELM_VERSION v3.2.0-rc.1
+ENV HELM_VERSION 'v3.2.0-rc.1'
 RUN curl -fsS "https://get.helm.sh/helm-v$HELM_VERSION-linux-amd64.tar.gz" -o /helm.tar.gz \
     && tar -zxf helm.tar.gz \
     && mv linux-amd64/helm /usr/local/bin \
