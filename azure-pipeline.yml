@@ -16,6 +16,7 @@ pr: none
 variables:
   imageName: 'ado-agent'
   imageTag: $(build.buildId)
+  skipComponentGovernanceDetection: true
   # define 3 more variables: registryName, registryLogin and registryPassword in the build pipeline in UI
 
 steps:
